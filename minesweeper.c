@@ -12,7 +12,7 @@
 #define SCENE_MINE_PERCENT_MAX      (50)
 
 #define SCENE_CELL_VOID_VALUE       (0)
-#define SCENE_CELL_VOID_CHAR        (' ')
+#define SCENE_CELL_VOID_CHAR        ('.')
 #define SCENE_MINE_VALUE            (9)
 #define SCENE_MINE_CHAR             ('*')
 #define SCENE_CELL_MASK_OFFSET      (10)
@@ -51,7 +51,8 @@ void AskFieldVariables(int *pa_pINbRow, int *pa_pINbCol, int *pa_pIPercent) {
         printf("Notes : \r\n%3d <= nbRow(s)\t<= %3d\r\n%3d <= nbCol\t\t<= %3d\r\n%3d <= minePercentage\t<= %3d\r\n  -> ", SCENE_NB_ROW_MIN, SCENE_NB_ROW_MAX, SCENE_NB_COL_MIN, SCENE_NB_COL_MAX, SCENE_MINE_PERCENT_MIN, SCENE_MINE_PERCENT_MAX);
         
         fgets(cBuffer, sizeof(cBuffer), stdin);
-        iNbFgetsArgs = sscanf(cBuffer, "%d %d %d", &pa_pINbRow, pa_pINbCol, pa_pIPercent);
+        iNbFgetsArgs = sscanf(cBuffer, "%d %d %d", pa_pINbRow, pa_pINbCol, pa_pIPercent);
+        printf("%d %d %d\n", *pa_pINbRow, *pa_pINbCol, *pa_pIPercent);
 
     } while(*pa_pINbRow < SCENE_NB_ROW_MIN || *pa_pINbRow > SCENE_NB_ROW_MAX ||
             *pa_pINbCol < SCENE_NB_COL_MIN || *pa_pINbCol > SCENE_NB_COL_MAX ||
@@ -90,7 +91,16 @@ void SceneDisplay(int pa_sceneArray[][SCENE_NB_COL_MAX], int pa_nbRow, int pa_nb
     
         for(int i = 0; i < pa_nbRow; i++) {
             for(int j = 0; j < pa_nbCol; j++) {
-                printf("%c ", pa_sceneArray[i][j]);
+               switch(pa_sceneArray[i][j]) {
+                    case SCENE_CELL_VOID_VALUE :
+                        printf("%c", SCENE_CELL_VOID_CHAR);
+                        break;
+                    case SCENE_MINE_VALUE :
+                        printf("%c", SCENE_MINE_CHAR);
+                        break;
+                    default:
+                        printf("%c", pa_sceneArray[i][j]);
+               } 
             }
             printf("\r\n");
         }
