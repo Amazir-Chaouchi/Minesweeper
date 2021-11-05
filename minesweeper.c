@@ -84,7 +84,6 @@ void SceneInit(int pa_sceneArray[][SCENE_NB_COL_MAX], int pa_nbRow, int pa_nbCol
         }
         
         //Incrémentation de l’indice des cellules autour de la mine
-<<<<<<< HEAD
         for(int k = -1; k <= 1; k++) {
             for(int m = -1; m <= 1; m++) {
                 if( iMineRow + k >= 0 && iMineRow + k < pa_nbRow &&
@@ -93,18 +92,11 @@ void SceneInit(int pa_sceneArray[][SCENE_NB_COL_MAX], int pa_nbRow, int pa_nbCol
                     
                     pa_sceneArray[iMineRow + k][iMineCol + m]++;
                 }
-=======
-        for(int k = -1; k < 1; k++) {
-            for(int m = -1; m < 1; m++) {
-                if()
-                pa_sceneArray[iMineRow + k][iMineCol + m]++;
->>>>>>> origin
             }
         }
     }
     
     //Masquage de toutes les cases
-    //printf("Masquage des cellules...\r\n");
     for(int i = 0; i < pa_nbRow; i++) {
         for(int j = 0; j < pa_nbCol; j++) {
             pa_sceneArray[i][j] += SCENE_CELL_MASK_OFFSET;
@@ -113,7 +105,6 @@ void SceneInit(int pa_sceneArray[][SCENE_NB_COL_MAX], int pa_nbRow, int pa_nbCol
 }
 void SceneDisplay(int pa_sceneArray[][SCENE_NB_COL_MAX], int pa_nbRow, int pa_nbCol) {
     
-<<<<<<< HEAD
     ColumnDisplayX10(pa_nbCol);
     ColumnDisplay(pa_nbCol);
     BorderDisplay(pa_nbCol);
@@ -137,26 +128,15 @@ void SceneDisplay(int pa_sceneArray[][SCENE_NB_COL_MAX], int pa_nbRow, int pa_nb
             }
             else {
                 switch(pa_sceneArray[i][j]) {
-=======
-        for(int i = 0; i < pa_nbRow; i++) {
-            for(int j = 0; j < pa_nbCol; j++) {
-               /*switch(pa_sceneArray[i][j]) {
->>>>>>> origin
                     case SCENE_CELL_VOID_VALUE :
                         printf(" %c ", SCENE_CELL_VOID_CHAR);
                         break;
                     case SCENE_MINE_VALUE :
                         printf(" %c ", SCENE_MINE_CHAR);
                         break;
-<<<<<<< HEAD
                     default :
                     printf(" %d ", pa_sceneArray[i][j]); 
                 }
-=======
-                    default:*/
-                        printf("%", pa_sceneArray[i][j]);
-               //}
->>>>>>> origin
             }
 #endif
         }
