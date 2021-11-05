@@ -82,6 +82,7 @@ void SceneInit(int pa_sceneArray[][SCENE_NB_COL_MAX], int pa_nbRow, int pa_nbCol
         //Incrémentation de l’indice des cellules autour de la mine
         for(int k = -1; k < 1; k++) {
             for(int m = -1; m < 1; m++) {
+                if()
                 pa_sceneArray[iMineRow + k][iMineCol + m]++;
             }
         }
@@ -91,16 +92,16 @@ void SceneDisplay(int pa_sceneArray[][SCENE_NB_COL_MAX], int pa_nbRow, int pa_nb
     
         for(int i = 0; i < pa_nbRow; i++) {
             for(int j = 0; j < pa_nbCol; j++) {
-               switch(pa_sceneArray[i][j]) {
+               /*switch(pa_sceneArray[i][j]) {
                     case SCENE_CELL_VOID_VALUE :
                         printf("%c", SCENE_CELL_VOID_CHAR);
                         break;
                     case SCENE_MINE_VALUE :
                         printf("%c", SCENE_MINE_CHAR);
                         break;
-                    default:
-                        printf("%c", pa_sceneArray[i][j]);
-               } 
+                    default:*/
+                        printf("%", pa_sceneArray[i][j]);
+               //}
             }
             printf("\r\n");
         }
